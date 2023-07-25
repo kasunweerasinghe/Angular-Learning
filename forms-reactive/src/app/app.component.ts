@@ -8,9 +8,10 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
-
   //FormGroup helps to manage and handle form controls as a group
   signupForm: FormGroup;
+  forbiddenUserName = ['Chris', 'Anna'];
+
 
   // Initialize The Form
   ngOnInit() {
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
       // userData is nested Form Group
       'userData': new FormGroup({
         //we can add some values like 'kasun' as a username but here its null. Validators used for validation
-        'username': new FormControl(null, Validators.required),
+        'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         'email': new FormControl(null, [Validators.required, Validators.email]),
       }),
       'gender': new FormControl('male'),
@@ -34,6 +35,14 @@ export class AppComponent implements OnInit {
   onAddHobby() {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.signupForm.get('hobbies')).push(control) //casting
+  }
+
+  // Custom Validator
+  forbiddenNames(control: FormControl): { [s: string]: boolean } {
+    if (this.forbiddenUserName.indexOf(control.value) != -1) {
+      return {'nameIsForbidden': true};
+    }
+    return null;
   }
 
 }
