@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,14 @@ export class AppComponent implements OnInit {
       // this holds arrays of form controls
       'hobbies': new FormArray([]) // we cas store multiple data inside this array
     })
+    // get value when user type
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // )
+
+    // this.signupForm.statusChanges.subscribe(
+    //   (status) => console.log(status)
+    // )
   }
 
   onSubmit() {
