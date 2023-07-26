@@ -1,0 +1,16 @@
+<div class="parent">
+  <h2>Parent Component</h2>
+  <ul>
+    <li *ngFor="let bev of beverages">{{bev}}</li>
+  </ul>
+
+
+
+  <!-- New input field and button to add today beverage -->
+  <input type="text" id="beverage-input" #todayNewBeverage>
+  <button (click)="addNewTodayBeverage(todayNewBeverage.value)">Add Today Beverage</button>
+
+
+  <!--  newBeverageEvent coming from child beverage component-->
+  <app-beverages [beverages]="currentBeverages" (newBeverageEvent)="addBeverage($event)"></app-beverages>
+</div>

@@ -1,1 +1,9 @@
-<p>beverages works!</p>
+<div class="child">
+  <h2>Child Component</h2>
+  <p>Today's Beverages <strong>{{beverages}}</strong></p>
+  <label for="beverage-input"> Add Beverage </label>
+
+  <!--  #newBeverage this is template reference-->
+  <input type="text" id="beverage-input" #newBeverage>
+  <button (click)="addNewBeverage(newBeverage.value)">Add Beverage to Parent</button>
+</div>
