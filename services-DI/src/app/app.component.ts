@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    // use service here
+    // use account service here
     this.accounts = this.accountService.accounts;
 
   }

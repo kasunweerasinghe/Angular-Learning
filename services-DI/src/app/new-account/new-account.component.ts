@@ -7,7 +7,7 @@ import {AccountsService} from "../accounts.service";
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
   styleUrls: ['./new-account.component.css'],
-  providers: [LoggingService, AccountsService] // in here we inform to angular how to create this service
+  providers: [LoggingService] // in here we inform to angular how to create this service
 })
 export class NewAccountComponent {
 
@@ -20,9 +20,10 @@ export class NewAccountComponent {
   onCreateAccount(accountName: string, accountStatus: string) {
     // console.log('A server status changed, new status: ' + accountStatus);
 
-    // use service here
+    // use logging service here
     this.loggingService.logStatusChange(accountStatus);
 
+    // use account service here
     this.accountService.addAccount(accountName, accountStatus)
   }
 }

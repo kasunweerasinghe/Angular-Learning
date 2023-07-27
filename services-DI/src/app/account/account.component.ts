@@ -6,7 +6,7 @@ import {AccountsService} from "../accounts.service";
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
-  providers: [LoggingService, AccountsService] // in here we inform to angular how to create this service
+  providers: [LoggingService] // in here we inform to angular how to create this service
 })
 
 export class AccountComponent {
@@ -22,9 +22,10 @@ export class AccountComponent {
   onSetTo(status: string) {
     // console.log('A server status changed, new status: ' + status);
 
-    // use service here
+    // use logging service here
     this.loggingService.logStatusChange(status)
 
+    // use account service here
     this.accountService.updateStatus(this.id, status)
   }
 }
