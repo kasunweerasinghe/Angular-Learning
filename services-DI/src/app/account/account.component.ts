@@ -25,6 +25,9 @@ export class AccountComponent {
     // use logging service here
     this.loggingService.logStatusChange(status)
 
+    // after uncomment app.module.ts provider[] we can uncomment this too because we inject this as a service in app.module.ts
+    // this.loggingService.logStatusChange(status)
+
     // use account service here
     this.accountService.updateStatus(this.id, status)
   }

@@ -7,6 +7,7 @@ import {AccountsService} from "../accounts.service";
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
   styleUrls: ['./new-account.component.css'],
+  // also comment this if using Injectable()
   providers: [LoggingService] // in here we inform to angular how to create this service
 })
 export class NewAccountComponent {
@@ -22,6 +23,9 @@ export class NewAccountComponent {
 
     // use logging service here
     this.loggingService.logStatusChange(accountStatus);
+
+    // after uncomment app.module.ts provider[] we can uncomment this too because we inject this as a service in app.module.ts
+    // this.loggingService.logStatusChange(accountStatus);
 
     // use account service here
     this.accountService.addAccount(accountName, accountStatus)
