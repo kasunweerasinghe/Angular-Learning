@@ -40,6 +40,23 @@
               [value]="gender">{{ gender }}
           </label>
         </div>
+
+        <!--inside this div here user can add dynamically form controls-->
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button
+            class="btn btn-default"
+            type="button"
+            (click)="onAddHobby()">Add Hobby
+          </button>
+
+          <!--generate custom input for hobby-->
+          <div class="form-group" *ngFor="let hobbyControl of $any(signupForm.get('hobbies')).controls; let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+
+        <br>
         <span *ngIf="!signupForm.valid && signupForm.touched"
               class="help-block">please enter valid Data</span>
         <button class="btn btn-primary" type="submit">Submit</button>
