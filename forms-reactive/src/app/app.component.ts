@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 this is form package. this is a group of controls.
  */
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
         // need add controls('username','email'). controls mean key and value pair that we pass to that form object group.
         'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         //can add multiple Validators
-        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmail),
       }),
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
@@ -49,6 +50,22 @@ export class AppComponent implements OnInit {
     }
     // if validation is correct need to pass null or nothing.
     return null;
+  }
+
+  // Creating a Custom Async Validator
+  // (Promise<any> | Observable<any>) these are 2 constructs which handle asynchronous data.
+  forbiddenEmail(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value == 'test@gmail.com') {
+          resolve({'emailIsForbidden': true})
+        } else {
+          resolve(null)
+        }
+      }, 1500)
+    })
+
+    return promise;
   }
 
 }
