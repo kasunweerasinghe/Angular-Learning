@@ -5,23 +5,33 @@
       <!-- this [formGroup] directive tell angular get my form group that i create-->
       <!--formControlName this tell angular what the name of this input in my form in my typescript -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="form-control" />
+        <!-- this is form group name that create for nested form-->
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control"/>
+            <!-- check input field is correct and touched the input field. get() will get path to the element-->
+            <span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
+                  class="help-block">please enter valid user name</span>
+          </div>
 
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+            <span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"
+                  class="help-block">please enter valid email</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
-        </div>
+
+
         <div class="radio" *ngFor="let gender of genders">
           <label>
             <input
@@ -30,6 +40,8 @@
               [value]="gender">{{ gender }}
           </label>
         </div>
+        <span *ngIf="!signupForm.valid && signupForm.touched"
+              class="help-block">please enter valid Data</span>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
 
