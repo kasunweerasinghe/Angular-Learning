@@ -29,11 +29,37 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+
+
+    // valueChanges is s observable. in here every key stroke data will print
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // );
+
+    // statusChanges is s observable. in here when after type something check the status is it valid or not.
+    // this.signupForm.statusChanges.subscribe(
+    //   (status) => console.log(status)
+    // );
+
+    // in here we can preset values to the input fields
+    // this.signupForm.setValue({
+    //   'userData': {
+    //     'username': 'Kasun',
+    //     'email': 'kasun@test.com'
+    //   },
+    //   'gender': 'male',
+    //   'hobbies': []
+    // })
+
   }
+
 
   // form submit on click
   onSubmit() {
-    console.log(this.signupForm)
+    console.log(this.signupForm);
+    
+    // reset values after enter data input fields and press submit button
+    // this.signupForm.reset()
   }
 
   // create hobby
