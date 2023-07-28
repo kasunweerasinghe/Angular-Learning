@@ -4,7 +4,7 @@
 
       <!-- this [formGroup] directive tell angular get my form group that i create-->
       <!--formControlName this tell angular what the name of this input in my form in my typescript -->
-      <form [formGroup]="signupForm">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="username">Username</label>
           <input
