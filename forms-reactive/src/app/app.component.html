@@ -16,7 +16,12 @@
               class="form-control"/>
             <!-- check input field is correct and touched the input field. get() will get path to the element-->
             <span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
-                  class="help-block">please enter valid user name</span>
+                  class="help-block">
+              <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is Invalid</span>
+              <!--add error span-->
+              <span
+                *ngIf="signupForm.get('userData.username').errors['required']">  This field is required </span>
+            </span>
           </div>
 
           <div class="form-group">
