@@ -14,6 +14,7 @@ import {PostsService} from "./posts.service";
 export class AppComponent implements OnInit {
   loadedPosts: Post[] = [];
   isFetching = false;
+  error = null;
 
   // after import HttpClientModule in module.ts HttpClient need to inject.
   constructor(private http: HttpClient, private postService: PostsService) {
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
     this.postService.fetchPosts().subscribe(posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
+    }, error => {
+      this.error = error.message;
     })
   }
 
@@ -37,6 +40,9 @@ export class AppComponent implements OnInit {
     this.postService.fetchPosts().subscribe(posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
+    }, error => {
+      this.error = error.message;
+      console.log(error);
     })
   }
 
