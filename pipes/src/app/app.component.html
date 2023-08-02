@@ -11,7 +11,7 @@
             {{ server.status }}
           </span>
           <!-- shorten is custom create pipe-->
-          <strong>{{ server.name | shorten}}</strong> |
+          <strong>{{ server.name | shorten:15}}</strong> |
           <!-- | is pipe symbol. so in here we use built-in pipes uppercase-->
           {{ server.instanceType |  uppercase}} |
           <!-- can add 'fullDate'. pipes have a executed order left to right -->

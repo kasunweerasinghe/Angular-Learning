@@ -8,10 +8,10 @@ import {Pipe, PipeTransform} from "@angular/core";
 export class ShortenPipes implements PipeTransform {
 
   // and need also need transform() method
-  transform(value: any) {
-    if (value.length > 10) {
+  transform(value: any, limit: number) {
+    if (value.length > limit) {
       // transform always need to return
-      return value.substr(0, 10) + '...';
+      return value.substr(0, limit) + '...';
     }
     return value;
 
