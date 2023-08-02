@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+// import HttpClient
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,18 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   loadedPosts = [];
 
-  constructor(private http: HttpClient) {}
+  // after import HttpClientModule in module.ts HttpClient need to inject.
+  constructor(private http: HttpClient) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onCreatePost(postData: { title: string; content: string }) {
-    // Send Http request
-    console.log(postData);
+    // Send Http request. posts.json is firebase option not angular
+    this.http.post('https://ng-complete-guide-f6ee1-default-rtdb.firebaseio.com/posts.json', postData).subscribe(responseData => {
+      console.log(responseData)
+    })
   }
 
   onFetchPosts() {
