@@ -15,8 +15,7 @@ export class NewAccountComponent {
 
   // Or We can use DI injection using inject() function:
   // we use the constructor for use the service
-  constructor(private loggingService: LoggingService, private accountService: AccountsService) {
-  }
+  constructor(private loggingService: LoggingService, private accountService: AccountsService) {}
 
   onCreateAccount(accountName: string, accountStatus: string) {
     // console.log('A server status changed, new status: ' + accountStatus);

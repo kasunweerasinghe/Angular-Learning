@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   create new Observables. Observables are not feature from javascript or typescript.
   it's added by a package named rxjs
   */
+
   ngOnInit() {
     const customIntervalObservable = Observable.create((observer) => {
       let count = 0;

@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
   // form submit on click
   onSubmit() {
     console.log(this.signupForm);
-    
+
     // reset values after enter data input fields and press submit button
     // this.signupForm.reset()
   }
