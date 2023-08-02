@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   servers = [
     {
@@ -32,7 +33,8 @@ export class AppComponent {
       started: new Date(15, 1, 2017)
     }
   ];
-  getStatusClasses(server: {instanceType: string, name: string, status: string, started: Date}) {
+
+  getStatusClasses(server: { instanceType: string, name: string, status: string, started: Date }) {
     return {
       'list-group-item-success': server.status === 'stable',
       'list-group-item-warning': server.status === 'offline',
