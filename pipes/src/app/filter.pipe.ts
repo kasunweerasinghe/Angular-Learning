@@ -1,7 +1,9 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  // if we don't add this when after type input field that data won't add
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
 
@@ -18,5 +20,4 @@ export class FilterPipe implements PipeTransform {
     }
     return resultArray;
   }
-
 }
