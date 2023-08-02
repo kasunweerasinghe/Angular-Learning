@@ -13,7 +13,8 @@
           <strong>{{ server.name }}</strong> |
           <!-- | is pipe symbol. so in here we use built-in pipes uppercase-->
           {{ server.instanceType |  uppercase}} |
-          {{ server.started | date }}
+          <!-- can add 'fullDate'. pipes have a executed order left to right -->
+          {{ server.started | date:'fullDate' | uppercase }}
         </li>
       </ul>
     </div>
